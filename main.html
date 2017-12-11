@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script data-require="angularjs@1.5.8" data-semver="1.5.8" src="https://opensource.keycdn.com/angularjs/1.5.8/angular.min.js"></script>
+  <script data-require="ui-router@1.0.0-beta.2" data-semver="0.3.1" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+  <script src="mainCtrl.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- <div class="loader" data-loading></div> -->
+    <div class="row">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 templ">
+        <div ui-view="viewA"></div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 templ ">
+        <div ui-view="viewB"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="templ1" ui-view="viewC"></div>
+    </div>
+  </div>
+</body>
+
+</html>
+<style>
+.templ {
+  height: 550px;
+  width: 49.5%;
+  margin-top: 10px;
+  border: #cdcdcd medium solid;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.templ1 {
+  height: 30%;
+  width: 100%;
+  margin-top: 10px;
+  border: #cdcdcd medium solid;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+.loader {
+  border: 16px solid #000;
+  border-top: 16px solid #ffed00;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*.loader{
+  background: rgba(0,0,0,.2) url('loading.gif') center no-repeat;
+width:100%;
+height:100%;
+color: white;
+position:fixed;
+top:0;
+left:0;
+z-index:999;
+}*/
+</style>

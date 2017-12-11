@@ -1,0 +1,72 @@
+ angular.module('myApp', [])
+   .controller('AppController', ['$scope', function($scope) {
+     var self = this;
+     self.user = { id: null, username: '', address: '', email: '' };
+     self.id = 4;
+
+     self.users = [ // In future posts, we will get it from server using service
+       { id: 1, username: 'Sam', address: 'NY', email: 'sam@abc.com' },
+       { id: 2, username: 'Tomy', address: 'ALBAMA', email: 'tomy@abc.com' },
+       { id: 3, username: 'kelly', address: 'NEBRASKA', email: 'kelly@abc.com' }
+     ];
+       
+     self.submit = function() {
+       if (self.user.id === null) {
+         self.user.id = self.id++;
+         console.log('Saving New User', self.user);
+         self.users.push(self.user); //Or send to server, we will do it in when handling services
+         if (!progressBtn.hasClass("active")) {
+           progressBtn.addClass("active");
+           setTimeout(function() {
+             progressBtn.removeClass("active");
+           }, 10000);
+         }
+       } else {
+         for (var i = 0; i < self.users.length; i++) {
+           if (self.users[i].id === self.user.id) {
+             self.users[i] = self.user;
+             break;
+           }
+         }
+         console.log('User updated with id ', self.user.id);
+         if (!progressBtn.hasClass("active")) {
+           progressBtn.addClass("active");
+           setTimeout(function() {
+             progressBtn.removeClass("active");
+           }, 10000);
+         }
+       }
+       self.reset();
+     };
+
+     self.edit = function(id) {
+       console.log('id to be edited', id);
+       for (var i = 0; i < self.users.length; i++) {
+         if (self.users[i].id === id) {
+           self.user = angular.copy(self.users[i]);
+           break;
+         }
+       }
+     }
+
+     self.remove = function(id) {
+       console.log('id to be deleted', id);
+       for (var i = 0; i < self.users.length; i++) {
+         if (self.users[i].id === id) {
+           self.users.splice(i, 1);
+           if (self.user.id === id) { //It is shown in form, reset it.
+             self.reset();
+           }
+           break;
+         }
+       }
+     }
+
+     self.reset = function() {
+       self.user = { id: null, username: '', address: '', email: '' };
+       $scope.myForm.$setPristine(); //reset Form
+     }
+
+   }]);
+
+   

@@ -1,0 +1,15 @@
+<h1>Starter AngularJS app2</h1>
+<h2>Weather</h2>
+<table>
+  <tr>
+    <th>Principalcountry</th>
+    <th>Principalstate</th>
+    <th>Entityname</th>
+  </tr>
+  <div class="loader" data-loading></div>
+  <tr ng-repeat="w in weather| limitTo :19">
+    <td>{{w.principalcountry}}</td>
+    <td>{{w.principalstate}}</td>
+    <td>{{w.entityname}}</td>
+  </tr>
+</table>
