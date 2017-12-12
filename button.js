@@ -15,12 +15,6 @@
          self.user.id = self.id++;
          console.log('Saving New User', self.user);
          self.users.push(self.user); //Or send to server, we will do it in when handling services
-         if (!progressBtn.hasClass("active")) {
-           progressBtn.addClass("active");
-           setTimeout(function() {
-             progressBtn.removeClass("active");
-           }, 10000);
-         }
        } else {
          for (var i = 0; i < self.users.length; i++) {
            if (self.users[i].id === self.user.id) {
@@ -29,12 +23,6 @@
            }
          }
          console.log('User updated with id ', self.user.id);
-         if (!progressBtn.hasClass("active")) {
-           progressBtn.addClass("active");
-           setTimeout(function() {
-             progressBtn.removeClass("active");
-           }, 10000);
-         }
        }
        self.reset();
      };
